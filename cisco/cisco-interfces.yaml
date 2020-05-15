@@ -1,0 +1,20 @@
+- hosts: all  
+  gather_facts: false
+  vars:
+    no_auth_ports: [0,1,4,5,6]
+    trunk_ports: [3,7]
+
+  tasks:
+    - name: backup config
+      ios_config:
+        backup: yes
+    # just fortesting purposes
+    - name: create config 
+      template:
+        src: interfaces.j2
+        dest: "templates/{{inventory_hostname}}.cfg"
+
+    - name: push config
+      ios_config:
+        src: interfaces.j2
+        

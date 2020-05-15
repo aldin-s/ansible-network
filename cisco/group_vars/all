@@ -1,0 +1,4 @@
+ansible_connection: network_cli
+backup: sh running-config
+ansible_network_os: ios
+NUMBER_PORTS: 7
